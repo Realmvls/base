@@ -1,4 +1,4 @@
-#_*_ coding: utf-8 _*_
+# -*- coding: utf-8 -*-
 text2=open('data2','rb')
 text3= open('data3','rb')
 
