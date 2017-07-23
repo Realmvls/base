@@ -1,4 +1,6 @@
+#! /usr/bin/python
 # -*-coding:GBK-*-
+
 text2=open('data2','rb')
 text3= open('data3','rb')
 
