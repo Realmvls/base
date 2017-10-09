@@ -1,10 +1,10 @@
 #! /usr/bin/python
-# -*-coding:GBK-*-
+# -*-coding:UTF8-*-
 
 text2=open('data2','rb')
 text3= open('data3','rb')
 
-text2.readline()#Ìø¹ıµÚÒ»ĞĞ
+text2.readline()#ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
 text3.readline()
 lines2 = text2.readlines()
 lines3 = text3.readlines()
@@ -15,15 +15,15 @@ list3_name = []
 list3_email = []
 lines = []
 
-for line in lines2:     #»ñÈ¡data2ÖĞµÄĞÅÏ¢
+for line in lines2:     #ï¿½ï¿½È¡data2ï¿½Ğµï¿½ï¿½ï¿½Ï¢
     key = line.split()
     list2_name.append(str(key[0].decode('gbk')))
     list2_tele.append(str(key[1].decode('gbk')))
-for line in lines3:      #»ñÈ¡data3ÖĞµÄĞÅÏ¢
+for line in lines3:      #ï¿½ï¿½È¡data3ï¿½Ğµï¿½ï¿½ï¿½Ï¢
     key = line.split()
     list3_name.append(str(key[0].decode('gbk')))
     list3_email.append(str(key[1].decode('gbk')))
-#°´ÕÕË÷Òı±éÀúdata2
+#ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½data2
 for i in range(len(list2_name)):
     if list3_name[i] in list2_name:
         j = list3_name.index(list2_name[i])
@@ -33,7 +33,7 @@ for i in range(len(list2_name)):
         s = '\t'.join([list2_name[i],list2_tele[i],str('-------')])
         s += '\n'
     lines.append(s)
-#´¦Àídata3ÖĞÊ£ÓàĞÕÃû
+#ï¿½ï¿½ï¿½ï¿½data3ï¿½ï¿½Ê£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 for i in range(len(list3_name)):
     s=''
     if list3_name[i] not in list2_name:
