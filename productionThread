@@ -13,6 +13,7 @@ class thisThread (threading.Thread):
 
     def getResult(self):
         return self.res
+
     def run(self):
         print('starting',self.name,'at:',ctime())
         self.res = self.func(self.args)

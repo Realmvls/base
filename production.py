@@ -8,7 +8,6 @@ import queue
 import os
 import productionThread
 
-
 os.chdir('F:\\github\\base')
 def writeQ(queue):
     print('producing object for Q...',queue.put('xxx',1))
