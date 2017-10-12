@@ -6,9 +6,9 @@ from random import randint
 from time import sleep
 import queue
 import os
+os.chdir('F:\\github\\base')
 import productionThread
 
-os.chdir('F:\\github\\base')
 def writeQ(queue):
     print('producing object for Q...',queue.put('xxx',1))
     print('size now',queue.qsize())
