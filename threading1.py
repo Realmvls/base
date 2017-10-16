@@ -25,6 +25,7 @@ print('thread %s ended.' % threading.currentThread().getName())
 # t2.join()    #jocin()方法让线程逐条执行
 # print('thread %s ended.' % threading.currentThread().getName())
 
+
 ############################################################################################################################################
 #
 # import time
