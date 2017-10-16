@@ -1,21 +1,21 @@
 # !/usr/bin/Python
 # -*- coding: utf-8 -*-
-import time, threading
-# threading模块有个current_thread()函数，它永远返回当前线程的实例。主线程实例的名字叫MainThread
-def loop():
-    print('thread %s 开始' % threading.currentThread().getName())
-    n = 0
-    while n < 5:                                                                  #t1 = threading.Thread(target=run_thread, args=(5,),name='LoopThread')
-        n = n + 1
-        print('thread %s >>> %s' % (threading.currentThread().getName(), n))
-        time.sleep(1)
-    print('thread %s 结束.' % threading.currentThread().getName())
-#方法1
-for x in range(3):
-    t = threading.Thread(target = loop)
-    t.start()
-t.join()
-print('thread %s ended.' % threading.currentThread().getName())
+# import time, threading
+# # threading模块有个current_thread()函数，它永远返回当前线程的实例。主线程实例的名字叫MainThread
+# def loop():
+#     print('thread %s 开始' % threading.currentThread().getName())
+#     n = 0
+#     while n < 5:                                                                  #t1 = threading.Thread(target=run_thread, args=(5,),name='LoopThread')
+#         n = n + 1
+#         print('thread %s >>> %s' % (threading.currentThread().getName(), n))
+#         time.sleep(1)
+#     print('thread %s 结束.' % threading.currentThread().getName())
+# #方法1
+# for x in range(3):
+#     t = threading.Thread(target = loop)
+#     t.start()
+# t.join()
+# print('thread %s ended.' % threading.currentThread().getName())
 #开始线程也可以用下面这种方法写   方法2
 # t = threading.Thread(target=loop,name='LoopThread1')
 # t2 = threading.Thread(target=loop,name='LoopThread2')
@@ -90,3 +90,42 @@ print('thread %s ended.' % threading.currentThread().getName())
 # 上下文的切换快速将多个线程来回执行造成的假象。python和java那种可以真正调用多核心多线程的语言，
 # 在效率上还是有差异的。这个就是python一直被人诟病的GIL锁。
 
+
+###################################################################################################################################
+
+#队列queue 多应用在多线程应用中，多线程访问共享变量。对于多线程而言，访问共享变量时，队列queue是线程安全的
+# import queue
+#
+# q=queue.Queue(5)    #如果不设置长度,默认为无限长
+# print(q.maxsize)    #注意没有括号
+# q.put(123)
+# q.put(456)
+# q.put(789)
+# q.put(100)
+# q.put(111)
+#
+# print(q.get())
+# print(q.get())
+
+#消费者生产者问题  （并不建议用这种写法，这种写法会在内存中创建一个无线大的队列，时间过一会会卡）
+
+import queue,time,threading
+
+q = queue.Queue()
+def product(num):
+    while True:
+        try:
+            q.put(int(num),'商品')
+
+        except Exception as e:
+            print(e)
+def consumer(num):
+    while True:
+        print(num,q.get())
+        time.sleep(0.1)
+for i in range(5):
+    t = threading.Thread(target=product,args=(i,))
+    t.start()
+for j in range(300):
+    t = threading.Thread(target=consumer,args=(j,))
+    t.start()
